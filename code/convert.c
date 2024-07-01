@@ -1,5 +1,7 @@
 #include"declaration.h"
 
+int sq120_sq64[BOARD_SQ_NUMBER]={[0 ... BOARD_SQ_NUMBER-1]=65};
+int sq64_sq120[64]={[0 ... 64-1]=120};
 
 void convert_sq120_sq64()
 {

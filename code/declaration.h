@@ -2,13 +2,35 @@
 #define DECLARATION_H
 
 
+#include<stdlib.h>
+
+#define DEBUG                         // after completion fo the program just
+                                      //comment #define DEBUG so it will not 
+#ifndef DEBUG                         // output assert called in the program
+    #define ASSERT(n)  
+#else
+
+    #define ASSERT(n)                            \
+    if(!(n))                                     \        
+    {                                            \ 
+        printf("%s - Failed ",#n);               \
+        printf("on %s "__DATE__);                \
+        printf("at %s "__TIME__);                \
+        printf("in the file (%s) "__FILE__);     \
+        printf("at Line-> (%s) "__LINE__);       \
+        exit(1);                                 \
+    }                                            \
+
+#endif
+
+
 typedef unsigned long long U64;
 
 #define NAME "CLAY Engine"
 #define BOARD_SQ_NUMBER 120
 #define MAX_MOVE 2048
 
-enum {EMPTY, wP, wK, wB, wR, wQ, wK, bP, bK, bB, bR, bQ, bK}; //EMPTY=0 bK=12
+enum {EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK}; //EMPTY=0 bK=12
 enum {FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NO};
 enum {RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NO};
 
@@ -44,7 +66,7 @@ typedef struct
                                     // white,black and both
     int king_sq[2];
     int side;
-    int enPas, fiftyMone, ply, history_ply;
+    int enPas, fiftyMove, ply, history_ply;
     int castle;
 
     U64 posKey;
@@ -56,6 +78,9 @@ typedef struct
 
     UNDO history[MAX_MOVE];
 
+    // piece list for all the pieces in the board
+    int pList[13][10]; // 13 different pieces and max of each piece can be 10
+
 }BOARD;
 
 
@@ -65,8 +90,8 @@ typedef struct
 
 
 //global
-extern int sq120_sq64[BOARD_SQ_NUMBER]={120};
-extern int sq64_sq120[64]={65};
+extern int sq120_sq64[BOARD_SQ_NUMBER];
+extern int sq64_sq120[64];
 
 
 //functions

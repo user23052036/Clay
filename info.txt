@@ -1,0 +1,32 @@
+
+
+There are mainly 3 components to a function/variables:-
+1) Declarartion:-> no memory is allocated just telling the compiler that 
+                   this variable or a function exists. This part is mainly 
+                   done in a header file. Which is then included into the c 
+                   file when definition or function call might be present.
+
+2) Definition:->   Here the memory is alocated to the variable or a function. 
+                   This is done in a .c file
+
+3) FunctionCall:-> Here the function or the variable is called
+
+
+In C, the extern keyword is primarily used for variables to indicate that the 
+variable is defined elsewhere. For functions, including extern is optional and 
+doesn't change the linkage behavior. Functions declared in a header file without 
+extern still have external linkage by default.
+
+
+Header File (declaration.h): This is where you declare your variables and 
+functions that will be used across multiple source files. The extern keyword tells
+the compiler that these variables are declared elsewhere.This prevents the 
+compiler from expecting to find the function definition in the current 
+translation unit (source file).
+
+
+Source File (convert.c): Here, you include declaration.h to make use of the 
+declarations. You then define (allocate memory for) and initialize the global 
+variables sq120_sq64 and sq64_sq120. This ensures that there's only 
+one definition of these variables in your entire program.
+
