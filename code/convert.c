@@ -15,7 +15,8 @@ void convert_sq120_sq64()
         for(file=FILE_A; file<=FILE_H; file++)
         {
             //dont think of the conversion image think of 2 diff array :)
-            sq120 = FR2SQ(file,rank);
+            sq120 = SQ120(file,rank);
+            
             sq64_sq120[sq64] = sq120;   // sq64_sq120[0]=21; sq64_sq120[1]=22;
             sq120_sq64[sq120] = sq64;   // sq120_sq64[21]=0; sq120_sq64[22]=1;
             sq64++;

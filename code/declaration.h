@@ -11,8 +11,8 @@
 #else
 
     #define ASSERT(n)                            \
-    if(!(n))                                     \        
-    {                                            \ 
+    if(!(n))                                     \
+    {                                            \
         printf("%s - Failed ",#n);               \
         printf("on %s "__DATE__);                \
         printf("at %s "__TIME__);                \
@@ -86,7 +86,9 @@ typedef struct
 
 
 //Macros
-#define FR2SQ(F,R) ((A1+F) + (R*10))     //convert (file,rank)---> sq120 number
+#define SQ120(F,R) ((A1+F) + (R*10))     //convert (file,rank)---> sq120 number
+#define SQ64(sq120) sq120_sq64[sq120]    //convert  sq120 ---> sq64 base system
+#define CNT(bb) CountBits(bb)
 
 
 //global
@@ -95,8 +97,13 @@ extern int sq64_sq120[64];
 
 
 //functions
-extern void convert_sq120_sq64();
+
+//convert.c
 extern void convert();
+extern void print_BitBoard(U64);
+
+//bitboard.c
+extern int CountBits(U64);
 
 
 

@@ -10,8 +10,10 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 
 # Add the source files
 set(SOURCE_FILES
-    code/main.c
-    code/convert.c)
+    code/clay.c
+    code/convert.c
+    code/bitboard.c
+    )
 
 # Add the executable
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
